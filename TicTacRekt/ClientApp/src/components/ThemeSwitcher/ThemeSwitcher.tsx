@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ThemeSwitcherProps,
   IThemeSwitcherOwnProps,
@@ -10,6 +10,15 @@ import { IRootState } from "../../store/state/IRootState";
 import { Dispatch } from "redux";
 import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
 import { connect } from "react-redux";
+import styled from "styled-components";
+
+const SwitchButton = styled.button`
+  color: ${props => props.theme.colors.fourth};
+  background-color: ${props => props.theme.colors.secondary};
+  font-weight: 600;
+  font-size: ${props => props.theme.text.normalSize};
+  border-radius: 5px;
+`;
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
   theme,
@@ -18,7 +27,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
   return (
     <React.Fragment>
       <h2>Current theme is {theme}</h2>
-      <button
+      <SwitchButton
         onClick={() =>
           onThemeChange(
             theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK
@@ -26,7 +35,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         }
       >
         Change
-      </button>
+      </SwitchButton>
     </React.Fragment>
   );
 };

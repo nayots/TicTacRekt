@@ -1,5 +1,3 @@
-import * as React from "react";
-import * as Redux from "redux";
 import {
   GameBoardActions,
   GameBoardActionTypes

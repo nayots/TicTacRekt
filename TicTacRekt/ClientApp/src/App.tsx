@@ -1,12 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { ThemeSwitcherConnected } from "./components/ThemeSwitcher/ThemeSwitcher";
+import { ThemeProvider } from "styled-components";
+import { darkTheme } from "./configs/defaultThemes";
+import { GlobalStyles } from "./shared/styles/globalStyles";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <ThemeSwitcherConnected />
+      <GlobalStyles />
+      <ThemeProvider theme={darkTheme}>
+        <ThemeSwitcherConnected />
+      </ThemeProvider>
     </div>
   );
 };
