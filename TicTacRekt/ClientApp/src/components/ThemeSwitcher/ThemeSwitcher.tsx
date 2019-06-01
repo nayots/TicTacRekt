@@ -19,6 +19,7 @@ const SwitchButton = styled.button`
   font-size: ${props => props.theme.text.normalSize};
   border-radius: 5px;
   outline: none;
+  margin: 15px;
 `;
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({

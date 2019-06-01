@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import { ThemeSwitcherConnected } from "./components/ThemeSwitcher/ThemeSwitcher";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./configs/defaultThemes";
 import { GlobalStyles } from "./shared/styles/globalStyles";
 import { connect } from "react-redux";
 import { IRootState } from "./store/state/IRootState";
 import { AppTheme } from "./shared/enums/appTheme";
+import { Board } from "./components/Board/Board";
 
 interface IAppOwnProps {}
 
@@ -23,7 +23,7 @@ const AppComponent: React.FC<AppProps> = ({ activeTheme }) => {
     <div className="App">
       <GlobalStyles />
       <ThemeProvider theme={chosenTheme}>
-        <ThemeSwitcherConnected />
+        <Board />
       </ThemeProvider>
     </div>
   );
