@@ -18,6 +18,7 @@ const SwitchButton = styled.button`
   font-weight: 600;
   font-size: ${props => props.theme.text.normalSize};
   border-radius: 5px;
+  outline: none;
 `;
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
@@ -26,7 +27,6 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
 }: ThemeSwitcherProps) => {
   return (
     <React.Fragment>
-      <h2>Current theme is {theme}</h2>
       <SwitchButton
         onClick={() =>
           onThemeChange(

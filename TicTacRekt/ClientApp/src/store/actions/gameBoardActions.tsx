@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Action } from "redux";
 import { AppTheme } from "../../shared/enums/appTheme";
 
