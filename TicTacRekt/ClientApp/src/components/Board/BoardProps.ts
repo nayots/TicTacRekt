@@ -1,4 +1,4 @@
-import { ClearBoard } from "./../../store/actions/gameBoardActions";
+import { ClearBoard } from "../../store/actions/gameBoardActions";
 import { TileStatus } from "../../shared/enums/tileState";
 
 export interface IBoardOwnProps {}

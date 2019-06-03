@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ITileProps } from "./ITileProps";
+import { ITileStyleProps } from "./TileProps";
 
-export const BoardTile = styled.div<ITileProps>`
+export const BoardTile = styled.div<ITileStyleProps>`
   color: red;
   grid-row: ${props => props.gridY} / span 1;
   grid-column: ${props => props.gridX} / span 1;

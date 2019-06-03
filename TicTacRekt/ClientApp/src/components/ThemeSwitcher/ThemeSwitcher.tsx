@@ -4,7 +4,7 @@ import {
   IThemeSwitcherOwnProps,
   IThemeSwitcherConnectedProps,
   IThemeSwitcherDispatchProps
-} from "./IThemeSwitcherProps";
+} from "./ThemeSwitcherProps";
 import { AppTheme } from "../../shared/enums/appTheme";
 import { IRootState } from "../../store/state/IRootState";
 import { Dispatch } from "redux";

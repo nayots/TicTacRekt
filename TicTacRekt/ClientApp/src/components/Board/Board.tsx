@@ -5,7 +5,7 @@ import {
   IBoardOwnProps,
   IBoardConnectedProps,
   IBoardDispatchProps
-} from "./IBoardProps";
+} from "./BoardProps";
 import { IRootState } from "../../store/state/IRootState";
 import { Dispatch } from "redux";
 import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
@@ -23,7 +23,7 @@ const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
         <React.Fragment>
           {boardMatrix.map((tsR: TileStatus[], rInd: number) => {
             return tsR.map((tsc: TileStatus, cInd: number) => {
-              return <Tile gridY={rInd + 1} gridX={cInd + 1} />;
+              return <Tile status={tsc} gridY={rInd + 1} gridX={cInd + 1} />;
             });
           })}
         </React.Fragment>

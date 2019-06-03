@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./styles";
-import { ITileProps } from "./ITileProps";
+import { TileProps } from "./TileProps";
 
-export const Tile: React.FC<ITileProps> = (props): JSX.Element => {
+export const Tile: React.FC<TileProps> = (props): JSX.Element => {
   return (
     <React.Fragment>
       <S.BoardTile {...props}>
