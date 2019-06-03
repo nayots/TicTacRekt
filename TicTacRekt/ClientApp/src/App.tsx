@@ -21,9 +21,11 @@ const AppComponent: React.FC<AppProps> = ({ activeTheme }) => {
 
   return (
     <div className="App">
-      <GlobalStyles />
       <ThemeProvider theme={chosenTheme}>
-        <Board />
+        <React.Fragment>
+          <GlobalStyles />
+          <Board />
+        </React.Fragment>
       </ThemeProvider>
     </div>
   );

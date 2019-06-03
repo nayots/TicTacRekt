@@ -10,17 +10,7 @@ import { IRootState } from "../../store/state/IRootState";
 import { Dispatch } from "redux";
 import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
 import { connect } from "react-redux";
-import styled from "styled-components";
-
-const SwitchButton = styled.button`
-  color: ${props => props.theme.colors.fourth};
-  background-color: ${props => props.theme.colors.secondary};
-  font-weight: 600;
-  font-size: ${props => props.theme.text.normalSize};
-  border-radius: 5px;
-  outline: none;
-  margin: 15px;
-`;
+import * as S from "./styles";
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
   theme,
@@ -28,7 +18,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
 }: ThemeSwitcherProps) => {
   return (
     <React.Fragment>
-      <SwitchButton
+      <S.SwitchButton
         onClick={() =>
           onThemeChange(
             theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK
@@ -36,7 +26,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         }
       >
         Change
-      </SwitchButton>
+      </S.SwitchButton>
     </React.Fragment>
   );
 };

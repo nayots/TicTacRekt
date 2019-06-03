@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect, useState } from "react";
-import styled, { css } from "styled-components";
 import { ThemeSwitcherConnected } from "../ThemeSwitcher/ThemeSwitcher";
 import {
   BoardProps,
@@ -13,24 +12,7 @@ import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
 import { connect } from "react-redux";
 import { Tile } from "../Tile/Tile";
 import { TileStatus } from "../../shared/enums/tileState";
-
-const BoardHeader = styled.div`
-  grid-row: 1 / span 1;
-  grid-column: 3 / span 1;
-  justify-self: end;
-`;
-
-const BoardTiles = styled.div`
-  grid-row: 2 / span 1;
-  grid-column: 2 / span 1;
-  display: grid;
-`;
-
-const BoardGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 200px auto auto;
-`;
+import * as S from "./styles";
 
 const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
   const [tileElements, setTileElements] = useState(<React.Fragment />);
@@ -51,12 +33,12 @@ const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
 
   return (
     <React.Fragment>
-      <BoardGrid>
-        <BoardHeader>
+      <S.BoardGrid>
+        <S.BoardHeader>
           <ThemeSwitcherConnected />
-        </BoardHeader>
-        <BoardTiles>{tileElements}</BoardTiles>
-      </BoardGrid>
+        </S.BoardHeader>
+        <S.BoardTiles>{tileElements}</S.BoardTiles>
+      </S.BoardGrid>
     </React.Fragment>
   );
 };
