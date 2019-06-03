@@ -23,7 +23,14 @@ const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
         <React.Fragment>
           {boardMatrix.map((tsR: TileStatus[], rInd: number) => {
             return tsR.map((tsc: TileStatus, cInd: number) => {
-              return <Tile status={tsc} gridY={rInd + 1} gridX={cInd + 1} />;
+              return (
+                <Tile
+                  key={`${rInd}_${cInd}`}
+                  status={tsc}
+                  gridY={rInd + 1}
+                  gridX={cInd + 1}
+                />
+              );
             });
           })}
         </React.Fragment>
