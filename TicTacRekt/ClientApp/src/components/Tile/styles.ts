@@ -32,10 +32,11 @@ export const BoardTile = styled.div<ITileStyleProps>`
   }
 `;
 
-export const TileContent = styled.div`
+export const TileContent = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  cursor: ${props => (props.isActive ? "pointer" : "not-allowed")};
 `;

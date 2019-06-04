@@ -4,6 +4,7 @@ import {
 } from "../actions/gameBoardActions";
 import { AppTheme } from "../../shared/enums/appTheme";
 import { TileStatus } from "../../shared/enums/tileState";
+import { applySelection } from "../../shared/services/boardUtilities";
 
 export interface IGameBoardState {
   theme: AppTheme;
@@ -12,7 +13,11 @@ export interface IGameBoardState {
 
 const initialState: IGameBoardState = {
   theme: AppTheme.DARK,
-  boardMatrix: new Array(3).fill(new Array(3).fill(TileStatus.Empty))
+  boardMatrix: [
+    [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
+    [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
+    [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty]
+  ]
 };
 
 const gameBoardReducer = (
@@ -25,7 +30,21 @@ const gameBoardReducer = (
     case GameBoardActionTypes.CLEAR_BOARD:
       return {
         ...state,
-        boardMatrix: new Array(3).fill(new Array(3).fill(TileStatus.Empty))
+        boardMatrix: [
+          [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
+          [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
+          [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty]
+        ]
+      };
+    case GameBoardActionTypes.SET_PLAYER_SELECTION:
+      return {
+        ...state,
+        boardMatrix: applySelection(
+          state.boardMatrix,
+          action.payload.row,
+          action.payload.col,
+          TileStatus.Player1
+        )
       };
     default:
       break;

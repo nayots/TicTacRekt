@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeSwitcherConnected } from "../ThemeSwitcher/ThemeSwitcher";
 import {
   BoardProps,
