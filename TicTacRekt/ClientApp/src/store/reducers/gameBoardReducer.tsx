@@ -4,11 +4,18 @@ import {
 } from "../actions/gameBoardActions";
 import { AppTheme } from "../../shared/enums/appTheme";
 import { TileStatus } from "../../shared/enums/tileState";
-import { applySelection } from "../../shared/services/boardUtilities";
+import {
+  applySelection,
+  checkBoard
+} from "../../shared/services/boardUtilities";
+import { GameState } from "../../shared/enums/gameState";
+import { Turn } from "../../shared/enums/turn";
 
 export interface IGameBoardState {
   theme: AppTheme;
   boardMatrix: TileStatus[][];
+  gameState: GameState;
+  currentTurn: Turn;
 }
 
 const initialState: IGameBoardState = {
@@ -17,7 +24,9 @@ const initialState: IGameBoardState = {
     [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
     [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
     [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty]
-  ]
+  ],
+  gameState: GameState.NotStarted,
+  currentTurn: Turn.Player1
 };
 
 const gameBoardReducer = (
@@ -37,14 +46,18 @@ const gameBoardReducer = (
         ]
       };
     case GameBoardActionTypes.SET_PLAYER_SELECTION:
+      const selectionMatrixResult = applySelection(
+        state.boardMatrix,
+        action.payload.row,
+        action.payload.col,
+        state.currentTurn === Turn.Player1 ? TileStatus.Player1 : TileStatus.Player2
+      );
+      const newGameState = checkBoard(selectionMatrixResult, state.gameState);
       return {
         ...state,
-        boardMatrix: applySelection(
-          state.boardMatrix,
-          action.payload.row,
-          action.payload.col,
-          TileStatus.Player1
-        )
+        boardMatrix: selectionMatrixResult,
+        gameState: newGameState,
+        currentTurn: state.currentTurn === Turn.Player1 ? Turn.Player2 : Turn.Player1
       };
     default:
       break;
