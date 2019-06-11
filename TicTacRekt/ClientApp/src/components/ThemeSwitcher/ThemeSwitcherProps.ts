@@ -1,5 +1,5 @@
 import { AppTheme } from "../../shared/enums/appTheme";
-import { SetTheme } from "../../store/actions/gameBoardActions";
+import { SetThemeAction } from "../../store/actions/gameBoardActions";
 
 export interface IThemeSwitcherOwnProps {}
 
@@ -8,7 +8,7 @@ export interface IThemeSwitcherConnectedProps {
 }
 
 export interface IThemeSwitcherDispatchProps {
-  onThemeChange: (value: AppTheme) => SetTheme;
+  onThemeChange: (value: AppTheme) => SetThemeAction;
 }
 
 export type ThemeSwitcherProps = IThemeSwitcherOwnProps &

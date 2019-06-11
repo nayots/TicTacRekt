@@ -1,5 +1,5 @@
 export enum TileStatus {
   Empty = 0,
-  Player1 = 2,
-  Player2 = 4
+  Player1 = -100,
+  Player2 = 100
 }

@@ -1,5 +1,5 @@
 import { TileStatus } from "../../shared/enums/tileState";
-import { SetPlayerSelection } from "../../store/actions/gameBoardActions";
+import { SetPlayerSelectionAction } from "../../store/actions/gameBoardActions";
 
 export interface ITileStyleProps {
   gridX: number;
@@ -10,10 +10,12 @@ export interface ITileOwnProps {
   status: TileStatus;
 }
 
-export interface ITileConnectedProps {}
+export interface ITileConnectedProps {
+  gameIsHalted: boolean;
+}
 
 export interface ITileDispatchProps {
-  onTileClick(row: number, col: number): SetPlayerSelection;
+  onTileClick(row: number, col: number): SetPlayerSelectionAction;
 }
 
 export type TileProps = ITileStyleProps &

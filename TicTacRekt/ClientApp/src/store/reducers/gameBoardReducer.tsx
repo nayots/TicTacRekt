@@ -25,7 +25,7 @@ const initialState: IGameBoardState = {
     [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty],
     [TileStatus.Empty, TileStatus.Empty, TileStatus.Empty]
   ],
-  gameState: GameState.NotStarted,
+  gameState: GameState.InProgress,
   currentTurn: Turn.Player1
 };
 
@@ -50,14 +50,17 @@ const gameBoardReducer = (
         state.boardMatrix,
         action.payload.row,
         action.payload.col,
-        state.currentTurn === Turn.Player1 ? TileStatus.Player1 : TileStatus.Player2
+        state.currentTurn === Turn.Player1
+          ? TileStatus.Player1
+          : TileStatus.Player2
       );
-      const newGameState = checkBoard(selectionMatrixResult, state.gameState);
+      const newGameState = checkBoard(selectionMatrixResult);
       return {
         ...state,
         boardMatrix: selectionMatrixResult,
         gameState: newGameState,
-        currentTurn: state.currentTurn === Turn.Player1 ? Turn.Player2 : Turn.Player1
+        currentTurn:
+          state.currentTurn === Turn.Player1 ? Turn.Player2 : Turn.Player1
       };
     default:
       break;

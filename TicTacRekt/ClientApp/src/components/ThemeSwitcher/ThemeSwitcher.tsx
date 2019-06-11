@@ -8,7 +8,10 @@ import {
 import { AppTheme } from "../../shared/enums/appTheme";
 import { IRootState } from "../../store/state/IRootState";
 import { Dispatch } from "redux";
-import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
+import {
+  GameBoardActionTypes,
+  setTheme
+} from "../../store/actions/gameBoardActions";
 import { connect } from "react-redux";
 import * as S from "./styles";
 
@@ -46,10 +49,7 @@ const mapDispatchToProps = (
 ): IThemeSwitcherDispatchProps => {
   return {
     onThemeChange: (value: AppTheme) => {
-      return dispatch({
-        type: GameBoardActionTypes.SET_THEME,
-        payload: value
-      });
+      return dispatch(setTheme(value));
     }
   };
 };

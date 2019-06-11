@@ -12,18 +12,24 @@ import { TileStatus } from "../../shared/enums/tileState";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IRootState } from "../../store/state/IRootState";
-import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
+import {
+  GameBoardActionTypes,
+  setPlayerSelection
+} from "../../store/actions/gameBoardActions";
+import { flagsHelper } from "../../shared/services/utilities";
+import { GameState } from "../../shared/enums/gameState";
 
 export const TileComponent: React.FC<TileProps> = ({
   gridY,
   gridX,
   status,
-  onTileClick
+  onTileClick,
+  gameIsHalted
 }): JSX.Element => {
   const [tContent, setTContent] = useState<JSX.Element | null>(null);
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
-    if (isActive) {
+    if (isActive && !gameIsHalted) {
       onTileClick(gridY - 1, gridX - 1);
     }
   };
@@ -44,7 +50,9 @@ export const TileComponent: React.FC<TileProps> = ({
   return (
     <React.Fragment>
       <S.BoardTile gridX={gridX} gridY={gridY} onClick={handleClick}>
-        <S.TileContent isActive={isActive}>{tContent}</S.TileContent>
+        <S.TileContent isActive={isActive && !gameIsHalted}>
+          {tContent}
+        </S.TileContent>
       </S.BoardTile>
     </React.Fragment>
   );
@@ -54,7 +62,15 @@ const mapStateToProps = (
   state: IRootState,
   ownProps: ITileOwnProps
 ): ITileConnectedProps => {
-  return {};
+  return {
+    gameIsHalted:
+      flagsHelper.hasFlag(state.gameBoard.gameState, GameState.Draw) ||
+      flagsHelper.hasFlag(
+        state.gameBoard.gameState,
+        GameState.Player1Victory
+      ) ||
+      flagsHelper.hasFlag(state.gameBoard.gameState, GameState.Player2Victory)
+  };
 };
 
 const mapDispatchToProps = (
@@ -63,13 +79,7 @@ const mapDispatchToProps = (
 ): ITileDispatchProps => {
   return {
     onTileClick: (row: number, col: number) => {
-      return dispatch({
-        type: GameBoardActionTypes.SET_PLAYER_SELECTION,
-        payload: {
-          row,
-          col
-        }
-      });
+      return dispatch(setPlayerSelection(row, col));
     }
   };
 };
