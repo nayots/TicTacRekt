@@ -1,7 +1,6 @@
 import clone from "clone";
 import { TileStatus } from "../enums/tileState";
 import { GameState } from "../enums/gameState";
-import { Turn } from "../enums/turn";
 
 export const applySelection = (
   boardMatrix: TileStatus[][],

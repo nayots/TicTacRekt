@@ -13,6 +13,9 @@ import { connect } from "react-redux";
 import { Tile } from "../Tile/Tile";
 import { TileStatus } from "../../shared/enums/tileState";
 import * as S from "./styles";
+import { Router, Switch, Route } from "react-router";
+
+import history from "../../shared/history/history";
 
 const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
   const [tileElements, setTileElements] = useState(<React.Fragment />);
@@ -44,7 +47,17 @@ const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
         <S.BoardHeader>
           <ThemeSwitcherConnected />
         </S.BoardHeader>
-        <S.BoardTiles>{tileElements}</S.BoardTiles>
+        <Router history={history}>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return <S.BoardTiles>{tileElements}</S.BoardTiles>;
+              }}
+            />
+          </Switch>
+        </Router>
       </S.BoardGrid>
     </React.Fragment>
   );

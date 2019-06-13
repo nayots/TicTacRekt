@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IRootState } from "../../store/state/IRootState";
 import {
-  GameBoardActionTypes,
   setPlayerSelection
 } from "../../store/actions/gameBoardActions";
 import { flagsHelper } from "../../shared/services/utilities";

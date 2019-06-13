@@ -8,10 +8,7 @@ import {
 import { AppTheme } from "../../shared/enums/appTheme";
 import { IRootState } from "../../store/state/IRootState";
 import { Dispatch } from "redux";
-import {
-  GameBoardActionTypes,
-  setTheme
-} from "../../store/actions/gameBoardActions";
+import { setTheme } from "../../store/actions/gameBoardActions";
 import { connect } from "react-redux";
 import * as S from "./styles";
 
