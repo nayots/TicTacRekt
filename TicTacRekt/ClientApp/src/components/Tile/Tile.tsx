@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from "react";
-import * as S from "./styles";
-import {
-  TileProps,
-  ITileOwnProps,
-  ITileConnectedProps,
-  ITileDispatchProps
-} from "./TileProps";
-import { ReactComponent as Xmark } from "../../shared/assets/xMark.svg";
-import { ReactComponent as Omark } from "../../shared/assets/oMark.svg";
-import { TileStatus } from "../../shared/enums/tileState";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IRootState } from "../../store/state/IRootState";
-import {
-  setPlayerSelection
-} from "../../store/actions/gameBoardActions";
-import { flagsHelper } from "../../shared/services/utilities";
+import { ReactComponent as Omark } from "../../shared/assets/oMark.svg";
+import { ReactComponent as Xmark } from "../../shared/assets/xMark.svg";
 import { GameState } from "../../shared/enums/gameState";
+import { TileStatus } from "../../shared/enums/tileState";
+import { flagsHelper } from "../../shared/services/utilities";
+import { setPlayerSelection } from "../../store/actions/gameBoardActions";
+import { IRootState } from "../../store/state/IRootState";
+import * as S from "./styles";
+import {
+  ITileConnectedProps,
+  ITileDispatchProps,
+  ITileOwnProps,
+  TileProps
+} from "./TileProps";
 
 export const TileComponent: React.FC<TileProps> = ({
   gridY,

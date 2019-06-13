@@ -42,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^4.1.16"
+    "@types/styled-components": "^4.1.16",
+    "tslint": "^5.17.0",
+    "tslint-microsoft-contrib": "^6.2.0"
   }
 }

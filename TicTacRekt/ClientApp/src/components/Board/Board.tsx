@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Route, Router, Switch } from "react-router";
+import { Dispatch } from "redux";
+import { TileStatus } from "../../shared/enums/tileState";
+import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
+import { IRootState } from "../../store/state/IRootState";
 import { ThemeSwitcherConnected } from "../ThemeSwitcher/ThemeSwitcher";
+import { Tile } from "../Tile/Tile";
 import {
   BoardProps,
-  IBoardOwnProps,
   IBoardConnectedProps,
-  IBoardDispatchProps
+  IBoardDispatchProps,
+  IBoardOwnProps
 } from "./BoardProps";
-import { IRootState } from "../../store/state/IRootState";
-import { Dispatch } from "redux";
-import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
-import { connect } from "react-redux";
-import { Tile } from "../Tile/Tile";
-import { TileStatus } from "../../shared/enums/tileState";
 import * as S from "./styles";
-import { Router, Switch, Route } from "react-router";
 
 import history from "../../shared/history/history";
 

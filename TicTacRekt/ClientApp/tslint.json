@@ -1,0 +1,13 @@
+{
+  "extends": ["tslint-microsoft-contrib/recommended"],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
+  "rules": {
+    "ordered-imports": true,
+    "no-relative-imports": false,
+    "trailing-comma": false,
+    "typedef": [false, "arrow-parameter"],
+    "react-this-binding-issue": false,
+    "import-name": false,
+    "use-simple-attributes": false
+  }
+}

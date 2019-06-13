@@ -1,16 +1,16 @@
 import React from "react";
-import {
-  ThemeSwitcherProps,
-  IThemeSwitcherOwnProps,
-  IThemeSwitcherConnectedProps,
-  IThemeSwitcherDispatchProps
-} from "./ThemeSwitcherProps";
-import { AppTheme } from "../../shared/enums/appTheme";
-import { IRootState } from "../../store/state/IRootState";
-import { Dispatch } from "redux";
-import { setTheme } from "../../store/actions/gameBoardActions";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { AppTheme } from "../../shared/enums/appTheme";
+import { setTheme } from "../../store/actions/gameBoardActions";
+import { IRootState } from "../../store/state/IRootState";
 import * as S from "./styles";
+import {
+  IThemeSwitcherConnectedProps,
+  IThemeSwitcherDispatchProps,
+  IThemeSwitcherOwnProps,
+  ThemeSwitcherProps
+} from "./ThemeSwitcherProps";
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
   theme,
