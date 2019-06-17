@@ -8,6 +8,7 @@
     "typedef": [false, "arrow-parameter"],
     "react-this-binding-issue": false,
     "import-name": false,
-    "use-simple-attributes": false
+    "use-simple-attributes": false,
+    "no-unused-variable": true
   }
 }

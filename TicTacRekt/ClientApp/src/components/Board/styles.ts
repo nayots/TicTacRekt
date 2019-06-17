@@ -6,7 +6,7 @@ export const BoardHeader = styled.div`
   justify-self: end;
 `;
 
-export const BoardTiles = styled.div`
+export const BoardMainStage = styled.div`
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
   display: grid;

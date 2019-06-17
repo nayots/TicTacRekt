@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { Route, Router, Switch } from "react-router";
-import { Dispatch } from "redux";
 import { TileStatus } from "../../shared/enums/tileState";
-import { GameBoardActionTypes } from "../../store/actions/gameBoardActions";
 import { IRootState } from "../../store/state/IRootState";
-import { ThemeSwitcherConnected } from "../ThemeSwitcher/ThemeSwitcher";
+import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
 import { Tile } from "../Tile/Tile";
-import {
-  BoardProps,
-  IBoardConnectedProps,
-  IBoardDispatchProps,
-  IBoardOwnProps
-} from "./BoardProps";
+import { BoardProps } from "./BoardProps";
 import * as S from "./styles";
 
 import history from "../../shared/history/history";
 
-const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
+export const Board: React.FC<BoardProps> = (): JSX.Element => {
   const [tileElements, setTileElements] = useState(<React.Fragment />);
+  const boardMatrix = useSelector((s: IRootState) => s.gameBoard.boardMatrix);
 
   useEffect(() => {
     setTileElements(() => {
@@ -45,47 +39,24 @@ const BoardComponent: React.FC<BoardProps> = ({ boardMatrix }): JSX.Element => {
     <React.Fragment>
       <S.BoardGrid>
         <S.BoardHeader>
-          <ThemeSwitcherConnected />
+          <ThemeSwitcher />
         </S.BoardHeader>
-        <Router history={history}>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => {
-                return <S.BoardTiles>{tileElements}</S.BoardTiles>;
-              }}
-            />
-          </Switch>
-        </Router>
+        <S.BoardMainStage>
+          <Router history={history}>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => {
+                  return <React.Fragment>{tileElements}</React.Fragment>;
+                }}
+              />
+            </Switch>
+          </Router>
+        </S.BoardMainStage>
       </S.BoardGrid>
     </React.Fragment>
   );
 };
 
-const mapStateToProps = (
-  state: IRootState,
-  ownProps: IBoardOwnProps
-): IBoardConnectedProps => {
-  return {
-    boardMatrix: state.gameBoard.boardMatrix
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: Dispatch,
-  ownProps: IBoardOwnProps
-): IBoardDispatchProps => {
-  return {
-    clearBoard: () => {
-      return dispatch({
-        type: GameBoardActionTypes.CLEAR_BOARD
-      });
-    }
-  };
-};
-
-export const Board = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BoardComponent);
+export default Board;
