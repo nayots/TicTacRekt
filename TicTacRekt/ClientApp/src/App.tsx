@@ -13,7 +13,7 @@ export const App: React.FC<{}> = () => {
   const chosenTheme = activeTheme === AppTheme.DARK ? darkTheme : lightTheme;
   //TEST: sniffler
   return (
-    <div className="App">
+    <div className="App>
       <ThemeProvider theme={chosenTheme}>
         <React.Fragment>
           <GlobalStyles />
