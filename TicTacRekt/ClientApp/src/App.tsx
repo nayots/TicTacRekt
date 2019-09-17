@@ -11,7 +11,7 @@ import { IRootState } from "./store/state/IRootState";
 export const App: React.FC<{}> = () => {
   const activeTheme = useSelector((s: IRootState) => s.gameBoard.theme);
   const chosenTheme = activeTheme === AppTheme.DARK ? darkTheme : lightTheme;
-
+  //TEST: sniffler
   return (
     <div className="App">
       <ThemeProvider theme={chosenTheme}>
